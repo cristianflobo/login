@@ -4,12 +4,10 @@ const NavBar = () => {
   return (
     <div>
         
-    <nav className=""style={{backgroundColor:'burlywood',padding:15}}>
+    <nav style={{backgroundColor:'burlywood',padding:15,}}>
         <a class="navbar-brand">NOMBRE</a>
-        
-        <button class="btn btn-outline-success" type="submit">Search</button>
-        <button class="btn btn-primary" type="submit">Search</button>
-
+        {/* <button className="btn btn-outline-success " style={{position:"relative",}} type="submit">Search</button>
+        <button className="btn btn-primary" type="submit">Search</button> */}
     </nav>
     </div>
   )
