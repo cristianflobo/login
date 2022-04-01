@@ -5,18 +5,17 @@ import {Routes,Route, Router} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
 import Login from './components/Login';
 import NavBar from './components/NavBar';
+import Create from './components/Create';
 
 
 
 function App() {
   const store = generateStore()
   return (
-
     <Provider store={store}>   
-      <Routes>
-        
+      <Routes> 
         <Route path="/" element={<Login/>}/>  
-        <Route path="/informacion"  element={<NavBar/>}/>
+        <Route path="/create"  element={<Create/>}/>
       </Routes> 
     </Provider>
     
