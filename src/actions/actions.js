@@ -1,23 +1,38 @@
 import axios from  'axios'
 
 export const login1 = (e) => async (dispatch) => {
-    console.log("ee",e.target[0].value)
-    console.log("ee",e.target[1].value)
-    const info1 = []
-    try {   
-        for (let i = 1; i < 21; i++) {
-            const respuesta = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-            info1.push(respuesta.data)
+    try {    
+        const respuesta = await axios.post(`http://localhost:3001/`,{usuario1:e.target[0].value,clave:e.target[1].value})
+        console.log("res",respuesta.data)
+        if (respuesta.data) {
+            dispatch({
+                type:"LOGIN",
+                payload:respuesta.data,
+                log:true
+            })  
+        }                      
+    } catch (error){
+        console.log(error)
+    }    
+}
+
+export const crearUsuario = (e) => async (dispatch) => {
+    //const respuesta = {}
+    try {    
+        const  respuesta = await axios.post(`http://localhost:3001/create`,{usuario1:e.target[0].value,clave:e.target[1].value,})
+        if (respuesta.data) {
+            console.log("res",respuesta.data)
         }
-        dispatch({
-            type:"LOGIN",
-            payload:info1,
-        })                   
+        
+        // dispatch({
+        //     type:"LOGIN",
+        //     payload:info,
+        // })                   
        
     } catch (error){
         console.log(error)
+    }finally{
+      //  console.log("res",respuesta)
     } 
-    
-
 }
 

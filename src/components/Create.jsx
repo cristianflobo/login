@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login1 } from "../actions/actions";
+import { crearUsuario, login1 } from "../actions/actions";
 
 const Create = () => {
     const dispatch = useDispatch();
+    const prueba = useSelector(store => store.login)
+    console.log(prueba)
     const [form1, setform1] = useState({
       user: "",
       password: "",
@@ -11,7 +13,7 @@ const Create = () => {
     });
     const handleSumit = (e) => {
       e.preventDefault();
-      dispatch(login1(e))
+      dispatch(crearUsuario(e))
     };
     const handleChange = (e) => { 
       setform1({
@@ -21,7 +23,7 @@ const Create = () => {
       var hoy = new Date();
       var fecha =  hoy.getDay();
       console.log(fecha)
-      //console.log(e.target.name);
+     
     };
     return (
       <div
@@ -71,10 +73,12 @@ const Create = () => {
               placeholder="Confirmar password"
             />
           </div>
-          
+         
 
           <button
-            //onClick={(e) => dispatch(login1(e))}
+          //  !(form1.user || form1.password) && form1.confirmar === ""
+           disabled={form1.password ==="" || (form1.confirmar === form1.password? false : true)  }
+            onClick={(e) => dispatch(crearUsuario(e))}
             type="submit"
             className="btn btn-primary mt-3 col-12"
           >

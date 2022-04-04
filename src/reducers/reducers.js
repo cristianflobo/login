@@ -1,18 +1,21 @@
 
 const initialState = {
-    count: [],
+    id: "",
     name: "",
     password: "",
+    log:false
   }
-  const LOGIN = "LOGIN"
-  
+  const LOGIN = "LOGIN" 
   export default (state = initialState, action) => {
-    console.log("first",action.payload)
+    
     switch (action.type) {
-      case LOGIN:
+      case LOGIN: 
         return {
           ...state,
-          count: action.payload,
+          id: action.payload.id,
+          name:action.payload.usuario1,
+          password:action.payload.clave,
+          log:action.log
         }
     
       default:

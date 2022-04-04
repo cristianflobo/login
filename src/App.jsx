@@ -6,16 +6,19 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Create from './components/Create';
+import Navegacion from './components/Navegacion';
 
 
 
 function App() {
+ 
   const store = generateStore()
   return (
     <Provider store={store}>   
       <Routes> 
         <Route path="/" element={<Login/>}/>  
         <Route path="/create"  element={<Create/>}/>
+        {/* <Route path="/navegacion"  element={<Navegacion/>}/> */}
       </Routes> 
     </Provider>
     
