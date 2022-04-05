@@ -3,19 +3,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { login1 } from "../actions/actions";
 import Navegacion from "./Navegacion";
+import NavBar from "./NavBar";
 
 const Login = () => {
   const dispatch = useDispatch();
   const logg = useSelector(store => store.login.log)
-  console.log('login',logg)
+
   const [form1, setform1] = useState({
     user: "",
     password: "",
   });
+
   const handleSumit = (e) => {
-    e.preventDefault();
+   e.preventDefault();
     dispatch(login1(e))
   };
+  const seteo = (e) =>{
+    dispatch(login1(e))  
+  }
   const handleChange = (e) => { 
     setform1({
       ...form1,
@@ -23,7 +28,7 @@ const Login = () => {
     });
   };
 
-  if(!logg){
+  if(localStorage.navegacion == "false" || localStorage.navegacion == undefined){
     return (
       <div
         style={{ display: "flex", justifyContent: "center", paddingTop: "15%" }}
@@ -36,6 +41,7 @@ const Login = () => {
             Nombre
           </label>
           <input
+            
             name="user"
             onChange={(e)=>handleChange(e)}
             value={form1.user}
@@ -60,7 +66,7 @@ const Login = () => {
           </div>
           <button
           disabled={form1.user === "" || form1.password === ""}
-            onClick={(e) => dispatch(login1(e))}   
+            onClick={()=> seteo()}   
             type="submit"
             className="btn btn-primary mt-3 col-12"
           >
@@ -77,8 +83,8 @@ const Login = () => {
         </form>
       </div>
     );
-  }else{
-    return <div><Navegacion/></div>
+  }else {
+    return <div ><NavBar set={[form1,setform1]}/></div>
   }
 };
 

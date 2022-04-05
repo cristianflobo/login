@@ -9,6 +9,9 @@ const Navegacion = () => {
     }, 1000);
     console.log(prueba)
    // if (prueba.name !== "") {
+       if (localStorage.navegacion) {
+           
+       
         return (
             <div>
             
@@ -25,7 +28,7 @@ const Navegacion = () => {
             
             </div>
           )
-   // }
+   }
   
 }
 
